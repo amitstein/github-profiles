@@ -1,0 +1,6 @@
+<h2>Profiles</h2>
+<ul class="profiles">
+  <li *ngFor="let profile of profiles" (click)="gotoDetail(profile)">
+    <span class="badge">{{profile.id}}</span> {{profile.login}}
+  </li>
+</ul>
