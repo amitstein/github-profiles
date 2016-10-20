@@ -3,6 +3,7 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Profile } from './profile';
+import { Repo } from './repo'
 
 
 @Injectable()
@@ -27,6 +28,33 @@ export class ProfileService {
       .toPromise()
       .then(response =>
         response.json() as Profile
+      )
+      .catch(this.handleError);
+  }
+
+  getRepos(username: string): Promise<Repo[]> {
+    return this.http.get(this.github_api_uri + '/users/' + username + '/repos')
+      .toPromise()
+      .then(response =>
+        response.json() as Repo[]
+      )
+      .catch(this.handleError);
+  }
+
+  getFollowing(username: string): Promise<Profile[]> {
+    return this.http.get(this.github_api_uri + '/users/' + username + '/following')
+      .toPromise()
+      .then(response =>
+        response.json() as Profile[]
+      )
+      .catch(this.handleError);
+  }
+
+  getFollowers(username: string): Promise<Profile[]> {
+    return this.http.get(this.github_api_uri + '/users/' + username + '/followers')
+      .toPromise()
+      .then(response =>
+        response.json() as Profile[]
       )
       .catch(this.handleError);
   }
