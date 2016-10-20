@@ -24,7 +24,7 @@ export class ProfileDetailComponent implements OnInit {
     });
   }
 
-  addFavorites():void{
+  addToFavorites():void{
     this.favoritesService.add(this.profile);
   }
 

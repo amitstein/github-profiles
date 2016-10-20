@@ -1,4 +1,8 @@
 div {
-  width:400px;
-  background-color: #2aa198
+  background-color: #EEE
+}
+
+.view{
+  cursor: pointer;
+  color: #039be5;
 }

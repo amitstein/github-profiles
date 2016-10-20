@@ -1,9 +1,8 @@
 <div *ngIf="profile">
   <img src="{{profile.avatar_url}}" style="height:90px"/>
   <h2>{{profile.name}}</h2>
-  <h2>{{profile.login}}</h2>
-  <span (click)="addFavorites()">Add Favorites</span>
-  <h3><a href="{{profile.html_url}}">GitHub</a></h3>
+  <h2>{{profile.login}} <button (click)="addToFavorites()">Add to favorites</button></h2>
+  <h3><a href="{{profile.html_url}}">View profile on GitHub</a></h3>
   <ul>
     <li>Repositories: {{profile.public_repos}}</li>
     <li>Followers: {{profile.followers}}</li>
