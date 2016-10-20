@@ -8,12 +8,12 @@ import { Profile } from './profile';
 @Injectable()
 export class ProfileService {
 
-  private github_api = 'https://api.github.com/search/users?q=Daniel Goldberg in:fullname&page=1&per_page=20';  // URL to web api
+  private github_api_uri = 'https://api.github.com';
 
   constructor(private http: Http) { }
 
-  getProfiles(): Promise<Profile[]> {
-    return this.http.get(this.github_api)
+  searchProfiles(term: string): Promise<Profile[]> {
+    return this.http.get(this.github_api_uri + '/search/users?q= ' + term +  ' in:login%2Bfullname&page=1&per_page=20')
       .toPromise()
       .then(response =>
         response.json().items as Profile[]
@@ -22,9 +22,13 @@ export class ProfileService {
 
   }
 
-  getProfile(id: number): Promise<Profile> {
-    return this.getProfiles()
-      .then(profiles => profiles.find(profile => profile.id === id));
+  getProfile(username: string): Promise<Profile> {
+    return this.http.get(this.github_api_uri + '/users/' + username)
+      .toPromise()
+      .then(response =>
+        response.json() as Profile
+      )
+      .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<any> {

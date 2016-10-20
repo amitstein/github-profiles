@@ -7,12 +7,18 @@ import { RouterModule }   from '@angular/router';
 import { AppComponent } from './app.component';
 import { ProfilesComponent } from './profiles/profiles.component';
 import { ProfileDetailComponent } from './profile-detail/profile-detail.component';
+import { ProfileSearchComponent } from './profile-search/profile-search.component';
+import { HomeComponent } from './home/home.component';
+import { FavoritesComponent } from './favorites/favorites.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfilesComponent,
-    ProfileDetailComponent
+    ProfileDetailComponent,
+    ProfileSearchComponent,
+    HomeComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -20,11 +26,15 @@ import { ProfileDetailComponent } from './profile-detail/profile-detail.componen
     HttpModule,
     RouterModule.forRoot([
       {
-        path: 'profiles',
+        path: '',
+        component: HomeComponent
+      },
+      {
+        path: 'search',
         component: ProfilesComponent
       },
       {
-        path: 'detail/:id',
+        path: 'detail/:username',
         component: ProfileDetailComponent
       },
     ])

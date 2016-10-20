@@ -1,0 +1,9 @@
+<span (click)="open()">view favorites</span>
+<div *ngIf="opened">
+  <ul class="profiles">
+    <li *ngFor="let profile of profiles">
+      <img src="{{profile.avatar_url}}" style="height:30px"> {{profile.login}} {{profile.name}}
+      <span (click)="remove(profile.login)">remove</span>
+    </li>
+  </ul>
+</div>

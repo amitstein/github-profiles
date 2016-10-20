@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params }   from '@angular/router';
-import { Location }                 from '@angular/common';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Profile } from '../profile';
 import { ProfileService } from '../profile.service';
+import { FavoritesService } from '../favorites.service'
 
 @Component({
   selector: 'app-profile-detail',
@@ -10,18 +10,22 @@ import { ProfileService } from '../profile.service';
   styleUrls: ['./profile-detail.component.css']
 })
 export class ProfileDetailComponent implements OnInit {
-  profile: Profile
+  profile: Profile;
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute,
-              private location: Location) { }
+              private favoritesService: FavoritesService) { }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
-      let id = +params['id'];
-      this.profileService.getProfile(id)
+      let username = params['username'];
+      this.profileService.getProfile(username)
         .then(profile => this.profile = profile);
     });
+  }
+
+  addFavorites():void{
+    this.favoritesService.add(this.profile);
   }
 
 }
