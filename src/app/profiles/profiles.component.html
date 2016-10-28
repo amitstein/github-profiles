@@ -1,7 +1,11 @@
 <h2>Profiles</h2>
 Order: <span (click)="order('asc')">Asc</span> <span (click)="order('desc')">Desc</span>
-<ul class="profiles">
-  <li *ngFor="let profile of profiles" (click)="gotoDetail(profile)">
-    <img src="{{profile.avatar_url}}" style="height:30px"> {{profile.login}} {{profile.name}}
-  </li>
-</ul>
+<md-list flex>
+  <md-list-item class="md-3-line" *ngFor="let profile of profiles" (click)="gotoDetail(profile)">
+  <img src="{{profile.avatar_url}}" class="md-avatar" alt="{{profile.login}}" />
+    <div class="md-list-item-text" layout="column">
+      <h3>{{profile.name}}</h3>
+      <h4>{{profile.login}}</h4>
+    </div>
+  </md-list-item>
+</md-list>

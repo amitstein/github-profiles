@@ -1,29 +1,41 @@
 <div *ngIf="profile">
-  <img src="{{profile.avatar_url}}" style="height:90px"/>
-  <h2>{{profile.name}}</h2>
-  <h2>{{profile.login}} <button (click)="addToFavorites()">Add to favorites</button></h2>
+  <md-card>
+   <md-card-header>
+      <img md-card-avatar src="{{profile.avatar_url}}">
+      <md-card-title>{{profile.name}}</md-card-title>
+      <md-card-subtitle>{{profile.login}} </md-card-subtitle>
+   </md-card-header>
+   <md-card-content>
+      <ul>
+        <li>Repositories: {{profile.public_repos}}
+          <ul>
+            <li *ngFor="let repo of repos">
+              {{repo.name}}
+            </li>
+          </ul>
+        </li>
+        <li>Followers: {{profile.followers}}
+          <ul>
+            <li *ngFor="let follow of followers">
+              {{follow.login}}
+            </li>
+          </ul>
+        </li>
+        <li>Following: {{profile.following}}
+          <ul>
+            <li *ngFor="let follow of following">
+              {{follow.login}}
+            </li>
+          </ul>
+        </li>
+      </ul>
+   </md-card-content>
+   <md-card-actions>
+     <button md-button class="md-icon-button md-accent" aria-label="Favorite" (click)="addToFavorites()">
+        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+     </button>
+     <button md-button>SHARE</button>
+   </md-card-actions>
+</md-card>
   <h3><a href="{{profile.html_url}}">View profile on GitHub</a></h3>
-  <ul>
-    <li>Repositories: {{profile.public_repos}}
-      <ul>
-        <li *ngFor="let repo of repos">
-          {{repo.name}}
-        </li>
-      </ul>
-    </li>
-    <li>Followers: {{profile.followers}}
-      <ul>
-        <li *ngFor="let follow of followers">
-          {{follow.login}}
-        </li>
-      </ul>
-    </li>
-    <li>Following: {{profile.following}}
-      <ul>
-        <li *ngFor="let follow of following">
-          {{follow.login}}
-        </li>
-      </ul>
-    </li>
-  </ul>
 </div>
