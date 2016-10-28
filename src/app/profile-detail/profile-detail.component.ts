@@ -15,6 +15,7 @@ export class ProfileDetailComponent implements OnInit {
   repos: Repo[];
   following: Profile[];
   followers: Profile[];
+  isInFavorites: boolean;
 
   constructor(private profileService: ProfileService,
               private route: ActivatedRoute,

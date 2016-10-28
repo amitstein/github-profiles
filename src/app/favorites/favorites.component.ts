@@ -14,7 +14,7 @@ export class FavoritesComponent implements OnInit {
   constructor(private favoritesService: FavoritesService) { }
 
   ngOnInit() {
-    this.favoritesService.favoritesChange.subscribe(value => { this.profiles = value; })
+    this.favoritesService.favoritesChange.subscribe((profiles: Profile[]) => { this.profiles = profiles; })
   }
 
   open():void{
