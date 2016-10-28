@@ -12,6 +12,9 @@ import { ProfileSearchComponent } from './profile-search/profile-search.componen
 import { HomeComponent } from './home/home.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 
+import { FavoritesService } from './favorites.service';
+import { ProfileService } from './profile.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +44,10 @@ import { FavoritesComponent } from './favorites/favorites.component';
       },
     ])
   ],
-  providers: [],
+  providers: [
+    FavoritesService,
+    ProfileService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
