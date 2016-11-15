@@ -1,11 +1,11 @@
-<div *ngIf="profile">
+<div class="card-profile" *ngIf="profile">
   <md-card>
-   <md-card-header>
+    <md-card-header>
       <img md-card-avatar src="{{profile.avatar_url}}">
       <md-card-title>{{profile.name}}</md-card-title>
       <md-card-subtitle>{{profile.login}} </md-card-subtitle>
-   </md-card-header>
-   <md-card-content>
+    </md-card-header>
+    <md-card-content>
       <ul>
         <li>Repositories: {{profile.public_repos}}
           <ul>
@@ -14,7 +14,7 @@
             </li>
           </ul>
         </li>
-        <li>Followers: {{profile.followers}}
+          <li>Followers: {{profile.followers}}
           <ul>
             <li *ngFor="let follow of followers">
               {{follow.login}}
@@ -29,13 +29,12 @@
           </ul>
         </li>
       </ul>
-   </md-card-content>
-   <md-card-actions>
-     <button md-button class="md-icon-button md-accent" aria-label="Favorite" (click)="addToFavorites()">
-        <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
-     </button>
-     <button md-button>SHARE</button>
-   </md-card-actions>
-</md-card>
-  <h3><a href="{{profile.html_url}}">View profile on GitHub</a></h3>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button class="md-icon-button md-accent" aria-label="Favorite" (click)="addToFavorites()">
+        <md-icon svgSrc="/assets/moon.svg"></md-icon>
+      </button>
+      <a href="{{profile.html_url}}">View profile on GitHub</a>
+    </md-card-actions>
+  </md-card>
 </div>

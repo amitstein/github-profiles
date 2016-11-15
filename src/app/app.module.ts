@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, MdIconRegistry } from '@angular/material';
+
 
 import { AppComponent } from './app.component';
 import { ProfilesComponent } from './profiles/profiles.component';
@@ -50,4 +51,11 @@ import { ProfileService } from './profile.service';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(mdIconRegistry: MdIconRegistry) {
+    mdIconRegistry
+        .addSvgIcon('thumb-up', '/icon/assets/thumbup-icon.svg')
+        .addSvgIconSetInNamespace('core', '/icon/assets/core-icon-set.svg')
+        .registerFontClassAlias('fontawesome', 'fa');
+  }
+ }
